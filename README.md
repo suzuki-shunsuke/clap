@@ -1,0 +1,2 @@
+# clap
+simple binary installer
