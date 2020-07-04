@@ -1,0 +1,10 @@
+module github.com/suzuki-shunsuke/clap
+
+go 1.14
+
+require (
+	github.com/hashicorp/go-multierror v1.1.0
+	github.com/mholt/archiver/v3 v3.3.0
+	github.com/spf13/cobra v1.0.0
+	github.com/stretchr/testify v1.2.2
+)
