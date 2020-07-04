@@ -6,8 +6,8 @@ import (
 
 var rootCmd = &cobra.Command{ //nolint:gochecknoglobals
 	Use:   "clap",
-	Short: "clap is a simple binary installer",
-	Long:  `clap is a simple binary installer. https://github.com/suzuki-shunsuke/clap`,
+	Short: "clap is a simple installer",
+	Long:  `clap is a simple installer. https://github.com/suzuki-shunsuke/clap`,
 }
 
 func Execute() error {

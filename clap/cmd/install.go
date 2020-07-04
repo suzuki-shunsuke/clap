@@ -8,8 +8,8 @@ import (
 
 var installCmd = &cobra.Command{ //nolint:gochecknoglobals
 	Use:   "install",
-	Short: "install binary",
-	Long:  `install binary`,
+	Short: "download a file and extract files from downloaded file and install them",
+	Long:  "download a file and extract files from downloaded file and install them",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		// URL <file path in archive>:<install path> ...
 		input, err := cli.GetInput(cmd, args)
