@@ -1,0 +1,4 @@
+coverage.txt
+.coverage
+dist
+.git-rm-branch.yml
