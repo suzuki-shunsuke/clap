@@ -1,5 +1,11 @@
 # clap
 
+[![Build Status](https://github.com/suzuki-shunsuke/clap/workflows/CI/badge.svg)](https://github.com/suzuki-shunsuke/clap/actions)
+[![codecov](https://codecov.io/gh/suzuki-shunsuke/clap/branch/master/graph/badge.svg)](https://codecov.io/gh/suzuki-shunsuke/clap)
+[![Go Report Card](https://goreportcard.com/badge/github.com/suzuki-shunsuke/clap)](https://goreportcard.com/report/github.com/suzuki-shunsuke/clap)
+[![GitHub last commit](https://img.shields.io/github/last-commit/suzuki-shunsuke/clap.svg)](https://github.com/suzuki-shunsuke/clap)
+[![License](http://img.shields.io/badge/license-mit-blue.svg?style=flat-square)](https://raw.githubusercontent.com/suzuki-shunsuke/clap/master/LICENSE)
+
 Simple installer
 
 ## Install
