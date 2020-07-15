@@ -18,6 +18,8 @@ type Controller struct {
 	FileRemover FileRemover
 	FileCreator FileCreator
 	FileChecker FileChecker
+	FileRenamer FileRenamer
+	Mkdir       Mkdir
 }
 
 func New(params ParamsNew) (Controller, ParamsRun, error) {
@@ -28,6 +30,8 @@ func New(params ParamsNew) (Controller, ParamsRun, error) {
 		FileRemover: fsys.FileRemover{},
 		FileCreator: fsys.FileCreator{},
 		FileChecker: fsys.FileChecker{},
+		FileRenamer: fsys.FileRenamer{},
+		Mkdir:       fsys.Mkdir{},
 	}, ParamsRun(params), nil
 }
 
@@ -62,4 +66,12 @@ type Permissioner interface {
 
 type FileCreator interface {
 	Create(params fsys.ParamsCreateFile) error
+}
+
+type FileRenamer interface {
+	Rename(src, dest string) error
+}
+
+type Mkdir interface {
+	MkdirAll(path string, mode os.FileMode) error
 }

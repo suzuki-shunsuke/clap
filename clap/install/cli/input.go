@@ -15,8 +15,10 @@ type Input struct {
 	Files []string
 }
 
-var ErrTooFewArgument = errors.New("arguments is too few")
-var ErrColonNotFound = errors.New("invalid argument. colon(:) is needed. the format should be <file path in archive>:<install path>")
+var (
+	ErrTooFewArgument = errors.New("arguments is too few")
+	ErrColonNotFound  = errors.New("invalid argument. colon(:) is needed. the format should be <file path in archive>:<install path>")
+)
 
 func GetInput(cmd *cobra.Command, args []string) (Input, error) {
 	if len(args) < 2 { //nolint:gomnd
