@@ -35,6 +35,17 @@ func (ctrl Controller) Run(ctx context.Context, params ParamsRun) error {
 		}
 	}()
 
+	extractedTempDir, err := ctrl.TempDir.Create()
+	if err != nil {
+		return fmt.Errorf("failed to create a temporal directory: %w", err)
+	}
+
+	defer func() {
+		if err := ctrl.FileRemover.RemoveAll(extractedTempDir); err != nil {
+			log.Printf("failed to remove a temporary directory %s: %v", extractedTempDir, err)
+		}
+	}()
+
 	fileName := filepath.Base(params.URL.Path)
 	if fileName == "" {
 		return ErrEmptyFileName
@@ -51,7 +62,7 @@ func (ctrl Controller) Run(ctx context.Context, params ParamsRun) error {
 
 	var result error
 	for _, file := range params.Files {
-		if err := ctrl.Extract(ctx, ParamsExtract{
+		if err := ctrl.Extract(ctx, extractedTempDir, ParamsExtract{
 			File:   file,
 			Source: src,
 		}); err != nil {

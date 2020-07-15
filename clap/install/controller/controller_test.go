@@ -14,7 +14,15 @@ type mockExtractor struct {
 	err error
 }
 
+type mockRenamer struct {
+	err error
+}
+
 func (m mockExtractor) Extract(params extract.ParamsExtract) error {
+	return m.err
+}
+
+func (m mockRenamer) Rename(src, dest string) error {
 	return m.err
 }
 
@@ -25,6 +33,7 @@ func TestController_Run(t *testing.T) {
 	require.Nil(t, err)
 	ctrl1 := base
 	ctrl1.Extractor = mockExtractor{}
+	ctrl1.FileRenamer = mockRenamer{}
 
 	data := []struct {
 		title  string
