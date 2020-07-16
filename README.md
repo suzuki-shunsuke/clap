@@ -23,6 +23,7 @@ We don't want to search how to use these commands everytime we write the install
 It's bothersome.
 
 With `clap` we can install tools by simply specifying required parameters.
+`clap` judges the archive format of the downloaded file automatically by the extension of URL, so you don't have to change the command by the archive format.
 
 For example, to install [conftest](https://www.conftest.dev/), we have to write the following shell script.
 
