@@ -3,6 +3,7 @@ package cli
 import (
 	"context"
 	"io"
+	"net/http"
 
 	"github.com/suzuki-shunsuke/clap/pkg/constant"
 	"github.com/suzuki-shunsuke/clap/pkg/controller"
@@ -25,7 +26,19 @@ func (runner Runner) Run(ctx context.Context, args ...string) error {
 				Name:   "install",
 				Usage:  "download a file and extract files from downloaded file and install them",
 				Action: runner.action,
-				Flags:  []cli.Flag{},
+				Flags: []cli.Flag{
+					&cli.StringFlag{
+						Name:    "request",
+						Aliases: []string{"X"},
+						Usage:   "HTTP Method",
+						Value:   http.MethodGet,
+					},
+					&cli.StringFlag{
+						Name:    "header",
+						Aliases: []string{"H"},
+						Usage:   "HTTP Header",
+					},
+				},
 			},
 		},
 	}

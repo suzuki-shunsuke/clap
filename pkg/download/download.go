@@ -25,7 +25,9 @@ func New(params ParamsNew) Downloader {
 }
 
 type ParamsDownload struct {
-	URL *url.URL
+	URL    *url.URL
+	Method string
+	Header http.Header
 }
 
 func (dl Downloader) Run(ctx context.Context, params ParamsDownload) (*http.Response, error) {
@@ -33,5 +35,6 @@ func (dl Downloader) Run(ctx context.Context, params ParamsDownload) (*http.Resp
 	if err != nil {
 		return nil, err
 	}
+	req.Header = params.Header
 	return dl.httpClient.Do(req)
 }
