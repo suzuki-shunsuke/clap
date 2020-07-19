@@ -32,7 +32,7 @@ fi
 
 cd "$(dirname "$0")/.."
 
-VERSION_FILE=clap/constant/version.go
+VERSION_FILE=pkg/constant/version.go
 echo "create $VERSION_FILE"
 cat << EOS > "$VERSION_FILE"
 package constant
