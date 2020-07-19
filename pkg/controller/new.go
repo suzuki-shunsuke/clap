@@ -6,9 +6,9 @@ import (
 	"net/url"
 	"os"
 
-	"github.com/suzuki-shunsuke/clap/clap/install/download"
-	"github.com/suzuki-shunsuke/clap/clap/install/extract"
-	"github.com/suzuki-shunsuke/clap/clap/install/fsys"
+	"github.com/suzuki-shunsuke/clap/pkg/download"
+	"github.com/suzuki-shunsuke/clap/pkg/extract"
+	"github.com/suzuki-shunsuke/clap/pkg/fsys"
 )
 
 type Controller struct {

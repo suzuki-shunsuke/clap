@@ -1,27 +1,26 @@
-package cli_test
+package cli
 
 import (
 	"net/url"
 	"testing"
 
 	"github.com/stretchr/testify/require"
-	"github.com/suzuki-shunsuke/clap/clap/install/cli"
-	"github.com/suzuki-shunsuke/clap/clap/install/controller"
+	"github.com/suzuki-shunsuke/clap/pkg/controller"
 )
 
-func TestParseInput(t *testing.T) {
+func Test_parseInput(t *testing.T) {
 	urlString := "http://example.com"
 	u, err := url.Parse(urlString)
 	require.Nil(t, err)
 	data := []struct {
 		title string
-		input cli.Input
+		input Input
 		isErr bool
 		exp   controller.ParamsNew
 	}{
 		{
 			title: "normal",
-			input: cli.Input{
+			input: Input{
 				URL: urlString,
 				Files: []string{
 					"foo:/tmp/foo",
@@ -39,7 +38,7 @@ func TestParseInput(t *testing.T) {
 		},
 		{
 			title: "invalid argument",
-			input: cli.Input{
+			input: Input{
 				URL: urlString,
 				Files: []string{
 					"foo",
@@ -51,7 +50,7 @@ func TestParseInput(t *testing.T) {
 	for _, d := range data {
 		d := d
 		t.Run(d.title, func(t *testing.T) {
-			paramsNew, err := cli.ParseInput(d.input)
+			paramsNew, err := parseInput(d.input)
 			if d.isErr {
 				require.NotNil(t, err)
 				return

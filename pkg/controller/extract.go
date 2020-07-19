@@ -4,7 +4,7 @@ import (
 	"context"
 	"path/filepath"
 
-	"github.com/suzuki-shunsuke/clap/clap/install/extract"
+	"github.com/suzuki-shunsuke/clap/pkg/extract"
 )
 
 type ParamsExtract struct {
