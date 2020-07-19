@@ -13,11 +13,13 @@ type ParamsDownload struct {
 	URL    *url.URL
 	Source string
 	Dir    string
+	Method string
 }
 
 func (ctrl Controller) Download(ctx context.Context, params ParamsDownload) error {
 	resp, err := ctrl.Downloader.Run(ctx, download.ParamsDownload{
-		URL: params.URL,
+		URL:    params.URL,
+		Method: params.Method,
 	})
 	if err != nil {
 		return err

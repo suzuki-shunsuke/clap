@@ -36,8 +36,9 @@ func New(params ParamsNew) (Controller, ParamsRun, error) {
 }
 
 type ParamsNew struct {
-	URL   *url.URL
-	Files []File
+	URL    *url.URL
+	Files  []File
+	Method string
 }
 
 type FileChecker interface {

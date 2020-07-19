@@ -17,8 +17,9 @@ type File struct {
 }
 
 type ParamsRun struct {
-	URL   *url.URL
-	Files []File
+	URL    *url.URL
+	Files  []File
+	Method string
 }
 
 var ErrEmptyFileName error = errors.New("file name is empty")
@@ -54,6 +55,7 @@ func (ctrl Controller) Run(ctx context.Context, params ParamsRun) error {
 
 	if err := ctrl.Download(ctx, ParamsDownload{
 		URL:    params.URL,
+		Method: params.Method,
 		Source: src,
 		Dir:    tempDir,
 	}); err != nil {

@@ -11,8 +11,9 @@ import (
 )
 
 type Input struct {
-	URL   string
-	Files []string
+	URL    string
+	Files  []string
+	Method string
 }
 
 var (
@@ -25,8 +26,9 @@ func getInput(c *cli.Context) (Input, error) {
 		return Input{}, errTooFewArgument
 	}
 	return Input{
-		URL:   c.Args().First(),
-		Files: c.Args().Slice()[1:],
+		URL:    c.Args().First(),
+		Files:  c.Args().Slice()[1:],
+		Method: c.String("request"),
 	}, nil
 }
 
@@ -47,7 +49,8 @@ func parseInput(input Input) (controller.ParamsNew, error) {
 		return controller.ParamsNew{}, err
 	}
 	return controller.ParamsNew{
-		URL:   u,
-		Files: files,
+		URL:    u,
+		Files:  files,
+		Method: input.Method,
 	}, nil
 }
