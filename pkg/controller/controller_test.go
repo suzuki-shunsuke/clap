@@ -6,8 +6,8 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/require"
-	"github.com/suzuki-shunsuke/clap/clap/install/controller"
-	"github.com/suzuki-shunsuke/clap/clap/install/extract"
+	"github.com/suzuki-shunsuke/clap/pkg/controller"
+	"github.com/suzuki-shunsuke/clap/pkg/extract"
 )
 
 type mockExtractor struct {

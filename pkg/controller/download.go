@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"net/url"
 
-	"github.com/suzuki-shunsuke/clap/clap/install/download"
-	"github.com/suzuki-shunsuke/clap/clap/install/fsys"
+	"github.com/suzuki-shunsuke/clap/pkg/download"
+	"github.com/suzuki-shunsuke/clap/pkg/fsys"
 )
 
 type ParamsDownload struct {
