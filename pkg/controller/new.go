@@ -39,6 +39,7 @@ type ParamsNew struct {
 	URL    *url.URL
 	Files  []File
 	Method string
+	Header http.Header
 }
 
 type FileChecker interface {

@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"log"
+	"net/http"
 	"net/url"
 	"path/filepath"
 
@@ -20,6 +21,7 @@ type ParamsRun struct {
 	URL    *url.URL
 	Files  []File
 	Method string
+	Header http.Header
 }
 
 var ErrEmptyFileName error = errors.New("file name is empty")
@@ -58,6 +60,7 @@ func (ctrl Controller) Run(ctx context.Context, params ParamsRun) error {
 		Method: params.Method,
 		Source: src,
 		Dir:    tempDir,
+		Header: params.Header,
 	}); err != nil {
 		return err
 	}

@@ -3,6 +3,7 @@ package controller
 import (
 	"context"
 	"fmt"
+	"net/http"
 	"net/url"
 
 	"github.com/suzuki-shunsuke/clap/pkg/download"
@@ -14,12 +15,14 @@ type ParamsDownload struct {
 	Source string
 	Dir    string
 	Method string
+	Header http.Header
 }
 
 func (ctrl Controller) Download(ctx context.Context, params ParamsDownload) error {
 	resp, err := ctrl.Downloader.Run(ctx, download.ParamsDownload{
 		URL:    params.URL,
 		Method: params.Method,
+		Header: params.Header,
 	})
 	if err != nil {
 		return err

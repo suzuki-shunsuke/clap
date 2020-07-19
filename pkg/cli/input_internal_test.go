@@ -1,6 +1,7 @@
 package cli
 
 import (
+	"net/http"
 	"net/url"
 	"testing"
 
@@ -34,6 +35,7 @@ func Test_parseInput(t *testing.T) {
 						InstallPath: "/tmp/foo",
 					},
 				},
+				Header: http.Header{},
 			},
 		},
 		{
