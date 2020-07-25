@@ -33,7 +33,7 @@ func (runner Runner) Run(ctx context.Context, args ...string) error {
 						Usage:   "HTTP Method",
 						Value:   http.MethodGet,
 					},
-					&cli.StringFlag{
+					&cli.StringSliceFlag{
 						Name:    "header",
 						Aliases: []string{"H"},
 						Usage:   "HTTP Header",
