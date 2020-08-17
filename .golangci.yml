@@ -5,3 +5,5 @@ linters:
   - wsl
   - goerr113
   - lll
+  - godot
+  - nlreturn
