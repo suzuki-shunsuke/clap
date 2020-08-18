@@ -7,13 +7,13 @@ import (
 	"os"
 
 	"github.com/suzuki-shunsuke/clap/pkg/download"
-	"github.com/suzuki-shunsuke/clap/pkg/extract"
 	"github.com/suzuki-shunsuke/clap/pkg/fsys"
+	"github.com/suzuki-shunsuke/clap/pkg/unarchiver"
 )
 
 type Controller struct {
 	Downloader  Downloader
-	Extractor   Extractor
+	Unarchiver  Unarchiver
 	TempDir     TempDirCreator
 	FileRemover FileRemover
 	FileCreator FileCreator
@@ -25,7 +25,7 @@ type Controller struct {
 func New(params ParamsNew) (Controller, ParamsRun, error) {
 	return Controller{
 		Downloader:  download.New(download.ParamsNew{}),
-		Extractor:   extract.Extractor{},
+		Unarchiver:  unarchiver.Unarchiver{},
 		TempDir:     fsys.TempDir{},
 		FileRemover: fsys.FileRemover{},
 		FileCreator: fsys.FileCreator{},
@@ -58,8 +58,8 @@ type FileRemover interface {
 	RemoveAll(string) error
 }
 
-type Extractor interface {
-	Extract(params extract.ParamsExtract) error
+type Unarchiver interface {
+	Unarchive(params unarchiver.ParamsUnarchive) error
 }
 
 type Permissioner interface {

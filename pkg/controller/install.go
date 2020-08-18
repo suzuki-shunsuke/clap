@@ -3,16 +3,14 @@ package controller
 import (
 	"context"
 	"path/filepath"
-
-	"github.com/suzuki-shunsuke/clap/pkg/extract"
 )
 
-type ParamsExtract struct {
+type ParamsInstall struct {
 	File   File
 	Source string
 }
 
-func (ctrl Controller) Extract(ctx context.Context, baseDir string, params ParamsExtract) error {
+func (ctrl Controller) Install(ctx context.Context, baseDir string, params ParamsInstall) error {
 	file := params.File
 	dest := file.InstallPath
 	if err := ctrl.Mkdir.MkdirAll(filepath.Dir(dest), 0o755); err != nil {
@@ -22,13 +20,6 @@ func (ctrl Controller) Extract(ctx context.Context, baseDir string, params Param
 		if fi.IsDir() {
 			dest = filepath.Join(file.InstallPath, filepath.Base(file.Path))
 		}
-	}
-	if err := ctrl.Extractor.Extract(extract.ParamsExtract{
-		Source:      params.Source,
-		Target:      file.Path,
-		Destination: baseDir,
-	}); err != nil {
-		return err
 	}
 	if err := ctrl.FileRemover.RemoveAll(dest); err != nil {
 		return err
