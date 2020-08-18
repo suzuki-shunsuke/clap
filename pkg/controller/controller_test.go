@@ -7,10 +7,10 @@ import (
 
 	"github.com/stretchr/testify/require"
 	"github.com/suzuki-shunsuke/clap/pkg/controller"
-	"github.com/suzuki-shunsuke/clap/pkg/extract"
+	"github.com/suzuki-shunsuke/clap/pkg/unarchiver"
 )
 
-type mockExtractor struct {
+type mockUnarchiver struct {
 	err error
 }
 
@@ -18,7 +18,7 @@ type mockRenamer struct {
 	err error
 }
 
-func (m mockExtractor) Extract(params extract.ParamsExtract) error {
+func (m mockUnarchiver) Unarchive(params unarchiver.ParamsUnarchive) error {
 	return m.err
 }
 
@@ -32,7 +32,7 @@ func TestController_Run(t *testing.T) {
 	base, _, err := controller.New(controller.ParamsNew{})
 	require.Nil(t, err)
 	ctrl1 := base
-	ctrl1.Extractor = mockExtractor{}
+	ctrl1.Unarchiver = mockUnarchiver{}
 	ctrl1.FileRenamer = mockRenamer{}
 
 	data := []struct {

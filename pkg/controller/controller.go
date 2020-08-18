@@ -10,6 +10,7 @@ import (
 	"path/filepath"
 
 	"github.com/hashicorp/go-multierror"
+	"github.com/suzuki-shunsuke/clap/pkg/unarchiver"
 )
 
 type File struct {
@@ -65,9 +66,16 @@ func (ctrl Controller) Run(ctx context.Context, params ParamsRun) error {
 		return err
 	}
 
+	if err := ctrl.Unarchiver.Unarchive(unarchiver.ParamsUnarchive{
+		Source:      src,
+		Destination: extractedTempDir,
+	}); err != nil {
+		return err
+	}
+
 	var result error
 	for _, file := range params.Files {
-		if err := ctrl.Extract(ctx, extractedTempDir, ParamsExtract{
+		if err := ctrl.Install(ctx, extractedTempDir, ParamsInstall{
 			File:   file,
 			Source: src,
 		}); err != nil {
