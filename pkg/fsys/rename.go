@@ -28,7 +28,7 @@ func create(src, dest string) error {
 	}()
 	outputFile, err := os.Create(dest)
 	if err != nil {
-		return fmt.Errorf("failed to open a dest file"+dest+": %w", err)
+		return fmt.Errorf("failed to open a dest file "+dest+": %w", err)
 	}
 	defer outputFile.Close()
 	if _, err := io.Copy(outputFile, inputFile); err != nil {
